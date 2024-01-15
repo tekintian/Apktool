@@ -118,5 +118,5 @@ jobs:
         with:
           commit: ${{ github.sha }}
           tag: ${{ env.TAG_ANME }}
-          artifacts: "brut.apktool/apktool-cli/build/libs/apktool-*"
+          artifacts: "brut.apktool/apktool-cli/build/*"
           allowUpdates: true
