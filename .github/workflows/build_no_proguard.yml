@@ -106,13 +106,7 @@ jobs:
         with:
           name: apktool.jar
           path: brut.apktool/apktool-cli/build/libs/apktool-*
-
-  publish:
-    needs: [build-and-test-with-Java-8-and-later]
-    runs-on: ubuntu-22.04
-    if: ${{ github.ref == 'refs/heads/master' }}
-    steps:
-      - uses: actions/checkout@v3
+      # publish the artifact file
       - uses: actions/download-artifact@v3
       - name: Set Tag Name
         run: echo "TAG_ANME=$(date +%Y%m%d)" >> $GITHUB_ENV
@@ -124,5 +118,5 @@ jobs:
         with:
           commit: ${{ github.sha }}
           tag: ${{ env.TAG_ANME }}
-          artifacts: "brut.apktool/apktool-cli/build/libs/apktool-*.jar"
+          artifacts: "brut.apktool/apktool-cli/build/libs/apktool-*"
           allowUpdates: true
